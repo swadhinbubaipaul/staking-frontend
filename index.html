@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Staking Dapp</title>
+		<link rel="stylesheet" href="style.css" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Kalam&family=Roboto+Mono&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+	<body>
+		<nav>
+			<h1>Staking Dapp</h1>
+			<button id="connect-btn" onclick="bundle.connect()">Connect</button>
+		</nav>
+		<hr />
+		<section id="main-section">
+			<div class="card">
+				<h2>User Info</h2>
+				<form action="javascript:void(0);">
+					<span>User token balance(in wei):</span>
+					<span id="check-balance"></span>
+					<span>Staked amount(in wei):</span>
+					<span id="check-staked-amount"></span>
+					<button class="btn" onclick="bundle.getUserInfo()">Check</button>
+				</form>
+			</div>
+			<div class="card">
+				<h2>Mint</h2>
+				<form action="javascript:void(0);">
+					<label for="amount">Amount(in wei) to mint:</label>
+					<input
+						id="input-mint"
+						type="number"
+						placeholder="Enter amount to mint"
+						required
+					/>
+					<button class="btn" onclick="bundle.mint()">Mint</button>
+				</form>
+			</div>
+			<div class="card">
+				<h2>Staking</h2>
+				<form action="javascript:void(0);">
+					<label for="amount">Amount(in wei):</label>
+					<input
+						id="input-stake"
+						type="number"
+						placeholder="Enter amount to stake"
+						required
+					/>
+					<button class="btn" onclick="bundle.stake()">Stake</button>
+				</form>
+			</div>
+			<div class="card">
+				<h2>Unstaking</h2>
+				<form action="javascript:void(0);">
+					<label for="amount">Amount(in wei):</label>
+					<input
+						id="input-unstake"
+						type="number"
+						placeholder="Enter amount to unstake"
+						required
+					/>
+					<button class="btn" onclick="bundle.unstake()">Unstake</button>
+				</form>
+			</div>
+			<div class="card">
+				<h2>Claim rewards</h2>
+				<form action="javascript:void(0);">
+					<p>Claim rewards without unstaking</p>
+					<button class="btn" onclick="bundle.claim()">Claim</button>
+				</form>
+			</div>
+		</section>
+		<script src="./dist/bundle.js" type="text/javascript"></script>
+	</body>
+</html>
