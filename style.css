@@ -9,6 +9,7 @@
 nav {
 	display: flex;
 	justify-content: space-between;
+	background-color: #424242;
 }
 
 nav h1 {
@@ -17,18 +18,20 @@ nav h1 {
 	font-family: "Kalam", cursive;
 	font-size: 2.3rem;
 	font-weight: bold;
+	color: white;
 }
 
 #connect-btn {
 	padding: 12px 22px;
 	margin: 30px 20px;
-	background-color: #a2bbff;
-	border-radius: 5px;
+	background-color: #ffdd94;
+	border: none;
+	border-radius: 16px;
 	cursor: pointer;
 	font-size: 1rem;
 }
 #connect-btn:hover {
-	background-color: #b3b3fd;
+	background-color: #f2bf51;
 }
 
 /* Main Section  */
@@ -37,7 +40,8 @@ nav h1 {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	margin-bottom: 50px;
+	padding: 50px 0px;
+	background-color: #dbdada;
 }
 #main-section .card {
 	display: flex;
