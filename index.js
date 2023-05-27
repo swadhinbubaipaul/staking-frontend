@@ -380,6 +380,7 @@ const inputUnstake = document.getElementById("input-unstake");
 const stakedAmount = document.getElementById("check-staked-amount");
 const mintAmount = document.getElementById("input-mint");
 const tokenBalance = document.getElementById("check-balance");
+const minimalAccount = document.getElementById("minimal-account");
 
 async function connect() {
 	if (typeof window.ethereum !== "undefined") {
@@ -394,7 +395,11 @@ async function connect() {
 		}
 		document.getElementById("connect-btn").innerHTML = "Connected";
 		const accounts = await ethereum.request({ method: "eth_accounts" });
-		console.log(accounts);
+		minimalAccount.innerHTML = accounts[0]
+			.substring(0, 6)
+			.concat("...")
+			.concat(accounts[0].slice(-6));
+		console.log(accounts[0]);
 	} else {
 		document.getElementById("connect-btn").innerHTML =
 			"Please install MetaMask";
