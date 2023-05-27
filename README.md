@@ -1,6 +1,6 @@
-# invoice-frontend
+# staking-frontend
 
-Front-end for Invoice smartcontract
+Frontend for Staking smartcontract
 
 - Please use Metamask extension
 - Use Mumbai network
