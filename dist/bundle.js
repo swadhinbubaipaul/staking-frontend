@@ -403,33 +403,42 @@ async function connect() {
 }
 
 async function stake() {
-	const provider = new ethers.providers.Web3Provider(window.ethereum);
-	const signer = provider.getSigner();
-	const myToken = new ethers.Contract(contractAddress, abi, signer);
-	const tx = await myToken.stake(inputStake.value);
-	await tx.wait(1);
+	if (inputStake.value != "") {
+		const provider = new ethers.providers.Web3Provider(window.ethereum);
+		const signer = provider.getSigner();
+		const myToken = new ethers.Contract(contractAddress, abi, signer);
+		const tx = await myToken.stake(inputStake.value);
+		await tx.wait(1);
+	}
 }
 async function unstake() {
-	const provider = new ethers.providers.Web3Provider(window.ethereum);
-	const signer = provider.getSigner();
-	const myToken = new ethers.Contract(contractAddress, abi, signer);
-	const tx = await myToken.unstake(inputUnstake.value);
-	await tx.wait(1);
+	if (inputUnstake.value != "") {
+		const provider = new ethers.providers.Web3Provider(window.ethereum);
+		const signer = provider.getSigner();
+		const myToken = new ethers.Contract(contractAddress, abi, signer);
+		const tx = await myToken.unstake(inputUnstake.value);
+		await tx.wait(1);
+	}
 }
 async function mint() {
-	const provider = new ethers.providers.Web3Provider(window.ethereum);
-	const signer = provider.getSigner();
-	const myToken = new ethers.Contract(contractAddress, abi, signer);
-	const tx = await myToken.mint(mintAmount.value);
-	await tx.wait(1);
+	if (mintAmount.value != "") {
+		const provider = new ethers.providers.Web3Provider(window.ethereum);
+		const signer = provider.getSigner();
+		const myToken = new ethers.Contract(contractAddress, abi, signer);
+		const tx = await myToken.mint(mintAmount.value);
+		await tx.wait(1);
+	}
 }
 
 async function claim() {
 	const provider = new ethers.providers.Web3Provider(window.ethereum);
 	const signer = provider.getSigner();
 	const myToken = new ethers.Contract(contractAddress, abi, signer);
-	const tx = await myToken.claim();
-	await tx.wait(1);
+	const staked = await myToken.getStakedAmount();
+	if (staked.toNumber() != 0) {
+		const tx = await myToken.claim();
+		await tx.wait(1);
+	}
 }
 async function getUserInfo() {
 	const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -438,7 +447,6 @@ async function getUserInfo() {
 	const staked = await myToken.getStakedAmount();
 	console.log("staked", staked.toNumber());
 	const accounts = await ethereum.request({ method: "eth_accounts" });
-	console.log(accounts);
 	const balance = await myToken.balanceOf(accounts[0]);
 	console.log("balance", balance.toNumber());
 	tokenBalance.innerHTML = balance.toNumber();
